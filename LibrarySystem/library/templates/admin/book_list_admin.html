@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 style="text-align: center; color: #4CAF50;">Books List (Admin)</h2>
+
+<div style="text-align: right; margin-bottom: 20px;">
+    <a href="{% url 'book_create' %}" style="text-decoration: none; background: #4CAF50; color: white; padding: 10px 20px; border-radius: 5px;">➕ Add New Book</a>
+</div>
+
+<table style="width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 16px; text-align: left; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <thead>
+        <tr style="background-color: #f2f2f2;">
+            <th style="padding: 12px; border-bottom: 1px solid #ddd;">Title</th>
+            <th style="padding: 12px; border-bottom: 1px solid #ddd;">Author</th>
+            <th style="padding: 12px; border-bottom: 1px solid #ddd;">ISBN</th>
+            <th style="padding: 12px; border-bottom: 1px solid #ddd;">Published Date</th>
+            <th style="padding: 12px; border-bottom: 1px solid #ddd;">Available</th>
+            <th style="padding: 12px; border-bottom: 1px solid #ddd;">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr style="background-color: {% cycle '#ffffff' '#f9f9f9' %};">
+            <td style="padding: 12px; border-bottom: 1px solid #ddd;">{{ book.title }}</td>
+            <td style="padding: 12px; border-bottom: 1px solid #ddd;">{{ book.author }}</td>
+            <td style="padding: 12px; border-bottom: 1px solid #ddd;">{{ book.isbn }}</td>
+            <td style="padding: 12px; border-bottom: 1px solid #ddd;">{{ book.published_date }}</td>
+            <td style="padding: 12px; border-bottom: 1px solid #ddd;">{{ book.available|yesno:"✅,❌" }}</td>
+            <td style="padding: 12px; border-bottom: 1px solid #ddd;">
+                <a href="{% url 'book_update' book.id %}" style="color: #2196F3; text-decoration: none;">✏️ Edit</a> |
+                <a href="{% url 'book_delete' book.id %}" onclick="return confirm('Are you sure?')" style="color: #f44336; text-decoration: none;">🗑️ Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
