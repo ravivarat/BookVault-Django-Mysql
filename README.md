@@ -30,8 +30,9 @@ BookVault is a Django-based library management system that allows administrators
 
 ---
 
-✅ **Contact
-For any inquiries or issues, feel free to reach out:
-📧 Email: ravivarat.123@gmail.com
-🔗 GitHub: 
+## ✅ **Contact For any inquiries or issues, feel free to reach out:**
+- 📧 Email: ravivarat.123@gmail.com
+- 🔗 GitHub: https://github.com/ravivarat
+
+---
 
